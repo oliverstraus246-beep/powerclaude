@@ -152,6 +152,12 @@ powerclaude/
 
 ---
 
+## Troubleshooting
+
+Vault not loading? Hooks not firing? Model routing broken? See **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** for solutions to every common setup issue.
+
+---
+
 ## Contributing
 
 Issues and PRs welcome. If you've built a hook, skill trigger pattern, or window prompt that works well -- open a PR. The goal is the best possible default setup, not a showcase of one person's config.

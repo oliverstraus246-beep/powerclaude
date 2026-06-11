@@ -155,10 +155,18 @@ Write-Host "  Template:  $claudeDir\CLAUDE.md.template"
 Write-Host "  API keys:  $claudeDir\api-keys.json"
 Write-Host "  Hooks:     $claudeDir\hooks\"
 Write-Host ""
+Write-Host "IMPORTANT: Persist your vault path so hooks can find it:" -ForegroundColor Yellow
+Write-Host "  Add this to your PowerShell profile (`$PROFILE):" -ForegroundColor Gray
+Write-Host "    `$env:CLAUDE_VAULT_PATH = `"$vaultRoot`"" -ForegroundColor Cyan
+Write-Host ""
 Write-Host "Next steps:" -ForegroundColor Yellow
-Write-Host "  1. Copy the template: Copy-Item $claudeDir\CLAUDE.md.template $claudeDir\CLAUDE.md"
-Write-Host "  2. Fill in the [PLACEHOLDER] sections with your actual paths"
-Write-Host "  3. Open Claude Code - vault loads on session start"
+Write-Host "  1. Add CLAUDE_VAULT_PATH to your PowerShell profile (see above)"
+Write-Host "  2. Copy-Item $claudeDir\CLAUDE.md.template $claudeDir\CLAUDE.md"
+Write-Host "  3. Open CLAUDE.md and search for FILL IN -- replace all 9 placeholders"
+Write-Host "  4. Open $claudeDir\hooks\user-prompt-submit.js and fill in ACTIVE_PROJECTS"
+Write-Host "  5. Open Claude Code -- vault loads automatically"
+Write-Host ""
+Write-Host "Stuck? See TROUBLESHOOTING.md in the repo." -ForegroundColor Gray
 Write-Host ""
 Write-Host "Want a fully generated CLAUDE.md in 7 questions?" -ForegroundColor Cyan
 Write-Host "  https://gumroad.com/l/powerclaude - 25 USD one-time"
