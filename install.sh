@@ -13,6 +13,13 @@ echo "PowerClaude"
 echo "Claude Code, fully configured. In 2 minutes."
 echo ""
 
+# Check for Node.js (required for hooks)
+if ! command -v node &>/dev/null; then
+  echo "  WARNING: Node.js not found. Hooks require Node.js 18+."
+  echo "  Install from https://nodejs.org then re-run this installer."
+  echo ""
+fi
+
 # Step 1: Vault location
 echo "Where do you want your Claude vault?"
 echo "  [1] $HOME/Documents/Claude  (recommended)"
@@ -65,13 +72,13 @@ mkdir -p "$CLAUDE_DIR"
 
 if [ -f "$CLAUDE_DIR/CLAUDE.md" ]; then
     cp "$CLAUDE_DIR/CLAUDE.md" "$CLAUDE_DIR/CLAUDE.md.backup"
-    echo "  Existing CLAUDE.md backed up"
+    echo "  Existing CLAUDE.md backed up to CLAUDE.md.backup"
 fi
 
 TEMPLATE_SRC="$SCRIPT_DIR/free/CLAUDE.md.template"
 if [ -f "$TEMPLATE_SRC" ]; then
     cp "$TEMPLATE_SRC" "$CLAUDE_DIR/CLAUDE.md.template"
-    echo "  CLAUDE.md.template installed"
+    echo "  CLAUDE.md.template installed to ~/.claude/"
 fi
 
 API_KEYS_PATH="$CLAUDE_DIR/api-keys.json"
@@ -79,7 +86,7 @@ if [ ! -f "$API_KEYS_PATH" ]; then
     API_KEYS_SRC="$SCRIPT_DIR/free/api-keys.json.example"
     if [ -f "$API_KEYS_SRC" ]; then
         cp "$API_KEYS_SRC" "$API_KEYS_PATH"
-        echo "  api-keys.json created"
+        echo "  api-keys.json created at ~/.claude/"
     fi
 fi
 
@@ -89,7 +96,7 @@ mkdir -p "$CLAUDE_DIR/hooks"
 HOOKS_SRC="$SCRIPT_DIR/free/hooks"
 if [ -d "$HOOKS_SRC" ]; then
     cp "$HOOKS_SRC"/*.js "$CLAUDE_DIR/hooks/" 2>/dev/null || true
-    echo "  Hooks installed"
+    echo "  Hooks installed to ~/.claude/hooks/"
 fi
 
 SETTINGS_PATH="$CLAUDE_DIR/settings.json"
@@ -98,25 +105,26 @@ if [ -f "$SETTINGS_PATH" ]; then
 else
     SETTINGS_SRC="$SCRIPT_DIR/free/hooks/settings.json.example"
     if [ -f "$SETTINGS_SRC" ]; then
-        escaped_vault=$(echo "$VAULT_ROOT" | sed 's|/|\/|g')
         sed "s|\[VAULT_PATH\]|$VAULT_ROOT|g" "$SETTINGS_SRC" > "$SETTINGS_PATH"
         echo "  settings.json created"
     fi
 fi
 
 echo ""
+echo "---"
 echo "PowerClaude installed."
 echo ""
 echo "  Vault:     $VAULT_ROOT"
 echo "  Template:  $CLAUDE_DIR/CLAUDE.md.template"
 echo "  API keys:  $CLAUDE_DIR/api-keys.json"
+echo "  Hooks:     $CLAUDE_DIR/hooks/"
 echo ""
 echo "Next steps:"
 echo "  1. cp ~/.claude/CLAUDE.md.template ~/.claude/CLAUDE.md"
-echo "  2. Fill in [PLACEHOLDER] sections with your actual paths"
-echo "  3. Open Claude Code - vault loads on session start"
+echo "  2. Open ~/.claude/CLAUDE.md and fill in every [PLACEHOLDER] section"
+echo "  3. Open ~/.claude/hooks/user-prompt-submit.js and fill in ACTIVE_PROJECTS"
+echo "  4. Open Claude Code -- vault loads on session start"
 echo ""
 echo "Want a fully generated CLAUDE.md in 7 questions?"
 echo "  https://gumroad.com/l/powerclaude - 25 USD one-time"
 echo ""
-

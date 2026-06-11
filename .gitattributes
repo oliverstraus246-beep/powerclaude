@@ -1,0 +1,13 @@
+﻿# Normalize line endings across platforms
+* text=auto
+
+# Shell scripts must use LF (Unix line endings)
+*.sh text eol=lf
+
+# Windows scripts use CRLF
+*.ps1 text eol=crlf
+
+# Markdown, JS, JSON - normalize to LF
+*.md text eol=lf
+*.js text eol=lf
+*.json text eol=lf

@@ -3,26 +3,40 @@
 // Install: copy to ~/.claude/hooks/user-prompt-submit.js
 // Wire: add to ~/.claude/settings.json under "UserPromptSubmit"
 //
-// SETUP: Set VAULT_PATH and fill in your active projects below.
+// SETUP: Fill in ACTIVE_PROJECTS and MUST_DO_RULES below, then save.
+// The hook reads CLAUDE_VAULT_PATH from your environment (set by the installer).
 
 const fs = require("fs");
 const path = require("path");
 
-// CONFIGURE THESE:
+// ============================================================
+// CONFIGURE THESE (replace examples with your real projects)
+// ============================================================
+
 const VAULT_PATH = process.env.CLAUDE_VAULT_PATH || "";
+
 const ACTIVE_PROJECTS = [
-  // { name: "My Project", path: "C:/path/to/project", stack: "React + Node" },
-];
-const MUST_DO_RULES = [
-  // "Frontend/UI -> invoke ui-ux-pro-max skill FIRST",
-  // "Bug/debugging -> invoke systematic-debugging skill",
-  // "Choices -> AskUserQuestion pop-up - never plain-text options list",
+  // Uncomment and fill in your projects:
+  // { name: "My App", path: "C:/Users/me/my-app", stack: "React + Node" },
+  // { name: "API Server", path: "C:/Users/me/api", stack: "Express + PostgreSQL" },
 ];
 
-// Build context summary
-const lines = ["ACTIVE PROJECTS"];
-for (const p of ACTIVE_PROJECTS) {
-  lines.push("  " + p.name + " -> " + p.path + " (" + p.stack + ")");
+const MUST_DO_RULES = [
+  // Rules Claude follows every session. Uncomment and customize:
+  // "Frontend/UI work -> invoke ui-ux-pro-max skill FIRST",
+  // "Debugging -> invoke systematic-debugging skill",
+  // "Choices with options -> use AskUserQuestion pop-up, never plain text lists",
+];
+
+// ============================================================
+
+const lines = [];
+
+if (ACTIVE_PROJECTS.length > 0) {
+  lines.push("ACTIVE PROJECTS");
+  for (const p of ACTIVE_PROJECTS) {
+    lines.push("  " + p.name + " -> " + p.path + " (" + p.stack + ")");
+  }
 }
 
 if (MUST_DO_RULES.length > 0) {
@@ -32,23 +46,34 @@ if (MUST_DO_RULES.length > 0) {
   }
 }
 
-// Try to get last session takeaway from vault
+// Pull last session summary from vault (if vault is configured)
 if (VAULT_PATH) {
   const takeawaysPath = path.join(VAULT_PATH, "Session Takeaways", "Session Takeaways.md");
   if (fs.existsSync(takeawaysPath)) {
     try {
       const content = fs.readFileSync(takeawaysPath, "utf8");
-      const lastEntry = content.split("\n").filter(l => l.match(/^\*\*\d{4}-\d{2}-\d{2}\*\*/)).pop();
+      // Match lines starting with a bold date: **YYYY-MM-DD**
+      const lastEntry = content
+        .split("\n")
+        .filter((l) => l.match(/^\*\*\d{4}-\d{2}-\d{2}\*\*/))
+        .pop();
       if (lastEntry) {
-        lines.push("", "LAST SESSION: " + lastEntry.replace(/^\*\*[\d-]+\*\* — /, "").trim());
+        // Strip the date prefix (handles both em dash and regular dash separators)
+        const summary = lastEntry
+          .replace(/^\*\*[\d-]+\*\*\s*[-—]\s*/, "")
+          .trim();
+        if (summary) {
+          lines.push("", "LAST SESSION: " + summary);
+        }
       }
-    } catch (e) {
-      // Silently skip
+    } catch (_) {
+      // Skip - vault read failure should not block the session
     }
   }
 }
 
-if (lines.length > 1) {
+// Only output if there is something to say
+if (lines.length > 0) {
   process.stdout.write(
     JSON.stringify({
       type: "context",

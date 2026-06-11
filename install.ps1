@@ -35,6 +35,14 @@ if (-not $scriptDir -or -not (Test-Path (Join-Path ([string]$scriptDir) "free"))
     }
 }
 
+# Check for Node.js (required for hooks)
+$nodeVer = node --version 2>$null
+if (-not $nodeVer) {
+    Write-Host "  WARNING: Node.js not found. Hooks require Node.js 18+." -ForegroundColor Red
+    Write-Host "  Install from https://nodejs.org then re-run this installer." -ForegroundColor Yellow
+    Write-Host ""
+}
+
 Write-Host ""
 Write-Host "Where do you want your Claude vault?" -ForegroundColor Yellow
 Write-Host "  [1] $env:USERPROFILE\Documents\Claude  (recommended)"
