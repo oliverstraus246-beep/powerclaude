@@ -1,39 +1,49 @@
-﻿# Home
-Parent: [[Home]]
+﻿# Home — [YOUR_NAME]
 
-> Claude vault. Loads at every session start. Fill in your name and projects below.
+> Claude reads this file at the start of every session. Keep it current.
 
 ---
 
 ## Quick Reference
-**[YOUR_NAME]** | [YOUR_ROLE] | [YOUR_EMAIL]
--> [[User Profile/User Profile|Full Profile]] | [[User Profile/Claude Behavior Rules|Behavior Rules]]
+**[YOUR_NAME]** · [YOUR_ROLE]
+**Email:** [YOUR_EMAIL]
+-> [[User Profile/User Profile|Full Profile]] · [[User Profile/Claude Behavior Rules|Behavior Rules]]
+
+---
+
+## Current Focus
+*(Update this whenever your priority shifts — Claude reads it every session)*
+
+Working on: [what you are currently building or fixing]
+Goal by [target date]: [what done looks like]
 
 ---
 
 ## Active Projects
-<!-- One line per project. Example:
-- **Storefront** - E-commerce platform (C:/dev/storefront) - Next.js + Supabase
-- **API** - Backend service (C:/dev/api) - Node + PostgreSQL
--->
+*(Add one line per project — Claude uses these paths automatically)*
+
+- [[Projects/Active/MyProject|MyProject]] — [one-line description] · `[/path/to/project]`
 
 -> [[Projects/Projects|All Projects]]
 
 ---
 
-## Last Session
-**[TODAY]** - PowerClaude installed. Fill in your projects above and personalize CLAUDE.md.
--> [[Session Takeaways/Session Takeaways|All Takeaways]]
+## Claude: Read at Session Start
+1. This file — quick context
+2. [[User Profile/Claude Behavior Rules|Behavior Rules]] — how to behave
+3. [[Claude and AI/When to Use What|Model + tool routing]]
+4. [[Session Takeaways/Session Takeaways|Recent sessions]] — what happened
 
 ---
 
 ## Knowledge Base
--> [[Claude and AI/When to Use What|When to Use What]] | [[User Profile/Claude Behavior Rules|Behavior Rules]]
+| Area | Notes |
+|------|-------|
+| [[Knowledge Base/Web Development/Web Development\|Web Dev]] | Stack notes, patterns, decisions |
+| [[Knowledge Base/Design/Design\|Design]] | UI decisions, component library |
+| [[Knowledge Base/Marketing/Marketing\|Marketing]] | Copy, growth, SEO |
 
 ---
 
-## Claude: Do These at Session Start
-1. Read this file (done)
-2. Note the active projects - these are the codebases in scope
-3. If a project is new this session, check for graphify graph - build if missing
-4. Pull from vault before reading any source files
+**Vault root:** [VAULT_ROOT]
+**Installed:** [TODAY]

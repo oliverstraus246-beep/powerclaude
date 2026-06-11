@@ -18,4 +18,6 @@ paid/
 install-paid.ps1
 install-paid.sh
 README-PAID.md
+package-paid.ps1
+dist/
 

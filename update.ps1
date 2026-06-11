@@ -1,8 +1,12 @@
 ﻿# PowerClaude Updater - Windows
-# Pulls the latest version and applies non-destructive updates.
-# Your CLAUDE.md, vault, and api-keys.json are never touched.
+# Updates hooks and validate.js to the latest version.
+# Does NOT touch: CLAUDE.md, your vault, api-keys.json, settings.json
 #
-# Run: .\update.ps1  (from cloned repo)
+# Run from the cloned repo:
+#   .\update.ps1
+#
+# Or directly from GitHub:
+#   irm https://raw.githubusercontent.com/oliverstraus246-beep/powerclaude/main/update.ps1 | iex
 
 $ErrorActionPreference = "Stop"
 $claudeDir = "$env:USERPROFILE\.claude"
@@ -11,39 +15,42 @@ Write-Host ""
 Write-Host "PowerClaude Updater" -ForegroundColor Cyan
 Write-Host ""
 
-# Pull latest
-Write-Host "Pulling latest from GitHub..." -ForegroundColor Yellow
-git pull origin main
-Write-Host "  Up to date" -ForegroundColor Green
-Write-Host ""
-
-# Update hooks (safe to overwrite - these are not user-edited)
-Write-Host "Updating hooks..." -ForegroundColor Yellow
-$hooksSrc = Join-Path $PSScriptRoot "free\hooks"
-if (Test-Path $hooksSrc) {
-    Get-ChildItem "$hooksSrc\*.js" | ForEach-Object {
-        Copy-Item $_.FullName "$claudeDir\hooks\" -Force
-        Write-Host "  Updated $($_.Name)" -ForegroundColor Green
+$scriptDir = $PSScriptRoot
+if (-not $scriptDir -or -not (Test-Path (Join-Path ([string]$scriptDir) "free"))) {
+    Write-Host "Downloading latest PowerClaude..." -ForegroundColor Yellow
+    $tempBase = Join-Path $env:TEMP "powerclaude-update-$(Get-Random)"
+    New-Item -ItemType Directory -Path $tempBase -Force | Out-Null
+    $zipPath = "$tempBase\repo.zip"
+    try {
+        Invoke-WebRequest "https://github.com/oliverstraus246-beep/powerclaude/archive/refs/heads/main.zip" -OutFile $zipPath -UseBasicParsing
+        Expand-Archive $zipPath -DestinationPath $tempBase -Force
+        $scriptDir = "$tempBase\powerclaude-main"
+    } catch {
+        Write-Host "  Download failed: $($_.Exception.Message)" -ForegroundColor Red
+        exit 1
     }
 }
 
-# Update CLAUDE.md template (not CLAUDE.md itself - that is yours)
-$tmplSrc = Join-Path $PSScriptRoot "free\CLAUDE.md.template"
-if (Test-Path $tmplSrc) {
-    Copy-Item $tmplSrc "$claudeDir\CLAUDE.md.template" -Force
-    Write-Host "  Updated CLAUDE.md.template" -ForegroundColor Green
+if (-not (Test-Path "$claudeDir\hooks")) {
+    Write-Host "  [FAIL] ~/.claude/hooks not found. Run install.ps1 first." -ForegroundColor Red
+    exit 1
+}
+
+# Update hooks
+$hooksSrc = Join-Path $scriptDir "free\hooks"
+Get-ChildItem "$hooksSrc\*.js" | ForEach-Object {
+    Copy-Item $_.FullName "$claudeDir\hooks\" -Force
+    Write-Host "  Updated: hooks\$($_.Name)" -ForegroundColor Green
+}
+
+# Update validate.js
+$validateSrc = Join-Path $scriptDir "validate.js"
+if (Test-Path $validateSrc) {
+    Copy-Item $validateSrc "$claudeDir\validate.js" -Force
+    Write-Host "  Updated: validate.js" -ForegroundColor Green
 }
 
 Write-Host ""
-Write-Host "Updated:" -ForegroundColor Green
-Write-Host "  Hooks:    $claudeDir\hooks\"
-Write-Host "  Template: $claudeDir\CLAUDE.md.template"
-Write-Host ""
-Write-Host "Not touched (yours to keep):" -ForegroundColor Gray
-Write-Host "  $claudeDir\CLAUDE.md"
-Write-Host "  $claudeDir\api-keys.json"
-Write-Host "  $env:CLAUDE_VAULT_PATH"
-Write-Host ""
-Write-Host "Run validate.js to confirm everything is still wired correctly:" -ForegroundColor Yellow
-Write-Host "  node validate.js"
+Write-Host "Update complete." -ForegroundColor Green
+Write-Host "  CLAUDE.md, vault, api-keys.json, and settings.json were not changed." -ForegroundColor Gray
 Write-Host ""
