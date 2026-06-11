@@ -108,7 +108,9 @@ Text or CashApp to get access:
 - CashApp: **$oliverstraus**
 - Text: **303-946-4224**
 
-Send $25 and your GitHub username. You'll get added as a collaborator on the private repo within a few hours.
+Send $25 and your GitHub username. I'll add you to the private repo within a few hours.
+
+Not sure if it's worth it for your setup? Text me first -- 303-946-4224. I'll tell you straight.
 
 ---
 
@@ -124,7 +126,7 @@ Yes. The install script, vault system, and all hook patterns are tested on Windo
 The installer backs it up to `CLAUDE.md.backup` before installing the template. Nothing gets overwritten without a safety copy.
 
 **How does the paid tier work?**
-Yes. No subscription. You have the private repo -- pull anytime to get updates.
+You pay once ($25), send your GitHub username, and get added as a collaborator on the private repo. No subscription. Pull anytime for updates.
 
 **What's the difference between the free template and the paid advanced CLAUDE.md?**
 The free template has every section with instructions and examples -- a solid starting point you fill in yourself. The paid version is the full, production-grade file: every auto-invoke rule, every skill trigger, the complete model routing matrix, and vault conventions. The exact architecture running daily in a production setup.
@@ -175,4 +177,5 @@ Issues and PRs welcome. If you've built a hook, skill trigger pattern, or window
 
 *Built on [Claude Code](https://claude.ai/code) by Anthropic.*
 *MIT License -- free tier. Paid tier files are proprietary.*
+
 
