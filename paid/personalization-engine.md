@@ -20,6 +20,17 @@ This is a one-time setup session. Take your time. Ask each question one at a tim
 
 Ask each question one at a time using AskUserQuestion. Wait for the full answer before proceeding to the next question.
 
+### Question 0: Name and role
+
+Ask this first. The answer fills in the Always-On Context section of CLAUDE.md.
+
+Use AskUserQuestion with:
+- question: "What is your name, role, and email address? (This goes into your CLAUDE.md so Claude knows who you are.)"
+- header: "Your identity"
+- options:
+  - "I'll type it in the Other field below"
+  - (just one option that guides them to use Other for free text)
+
 ### Question 1: Projects
 
 Ask: "List your active projects. For each one, tell me: the project name, its absolute path on disk, its tech stack, and what it does in one sentence."

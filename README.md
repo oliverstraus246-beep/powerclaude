@@ -65,6 +65,11 @@ The script:
 
 Then open Claude Code. The vault loads automatically on every session start.
 
+After installing, run the validator to confirm everything is wired correctly:
+```bash
+node ~/.claude/validate.js
+```
+
 ---
 
 ## Personalize in 5 Minutes (Free Tier)

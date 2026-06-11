@@ -131,6 +131,12 @@ $hooksSrc = Join-Path $scriptDir "free\hooks"
 if (Test-Path $hooksSrc) {
     Get-ChildItem "$hooksSrc\*.js" | ForEach-Object { Copy-Item $_.FullName $hooksDst -Force }
     Write-Host "  Hooks installed to ~/.claude/hooks/" -ForegroundColor Green
+
+$validateSrc = Join-Path $scriptDir "validate.js"
+if (Test-Path $validateSrc) {
+    Copy-Item $validateSrc "$claudeDir\validate.js" -Force
+    Write-Host "  validate.js installed to ~/.claude/" -ForegroundColor Green
+}
 }
 
 $settingsPath = "$claudeDir\settings.json"

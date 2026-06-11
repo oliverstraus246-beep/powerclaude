@@ -97,6 +97,10 @@ HOOKS_SRC="$SCRIPT_DIR/free/hooks"
 if [ -d "$HOOKS_SRC" ]; then
     cp "$HOOKS_SRC"/*.js "$CLAUDE_DIR/hooks/" 2>/dev/null || true
     echo "  Hooks installed to ~/.claude/hooks/"
+    if [ -f "$SCRIPT_DIR/validate.js" ]; then
+        cp "$SCRIPT_DIR/validate.js" "$CLAUDE_DIR/validate.js"
+        echo "  validate.js installed to ~/.claude/"
+    fi
 fi
 
 SETTINGS_PATH="$CLAUDE_DIR/settings.json"
