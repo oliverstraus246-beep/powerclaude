@@ -1,0 +1,11 @@
+﻿{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "command": "node -e \"const p=process.env.CLAUDE_TOOL_FILE||'';if(!p.match(/\\.(tsx|jsx)$/))process.exit(0);const {execSync}=require('child_process');try{execSync('npx prettier --write \"'+p+'\"',{stdio:'pipe'})}catch(e){}try{execSync('npx eslint \"'+p+'\" --fix --quiet',{stdio:'pipe'})}catch(e){}\"",
+        "description": "Format and lint React component files after edit"
+      }
+    ]
+  }
+}
