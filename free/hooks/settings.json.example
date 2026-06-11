@@ -1,0 +1,16 @@
+﻿{
+  "hooks": {
+    "SessionStart": [
+      {
+        "command": "node ~/.claude/hooks/session-start.js",
+        "description": "Load vault Home.md into context on session launch. Edit session-start.js to point to your vault path."
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "command": "node ~/.claude/hooks/user-prompt-submit.js",
+        "description": "Inject lean context summary on first message of each new conversation: active projects, key rules, last session."
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+﻿[
+  {
+    "name": "Gemini API Key",
+    "envVar": "GEMINI_API_KEY",
+    "value": "YOUR_GEMINI_API_KEY_HERE",
+    "description": "Used for model routing - cheap tasks routed here instead of Sonnet. Get one free at https://aistudio.google.com/apikey",
+    "usedBy": ["llm CLI", "graphify extraction"]
+  },
+  {
+    "name": "OpenAI API Key",
+    "envVar": "OPENAI_API_KEY",
+    "value": "YOUR_OPENAI_API_KEY_HERE",
+    "description": "Optional - only needed if using GPT models",
+    "usedBy": []
+  },
+  {
+    "name": "Anthropic API Key",
+    "envVar": "ANTHROPIC_API_KEY",
+    "value": "YOUR_ANTHROPIC_API_KEY_HERE",
+    "description": "Used when calling Claude API directly from scripts",
+    "usedBy": ["direct API calls"]
+  }
+]

@@ -1,0 +1,14 @@
+﻿# Paid tier - not committed to public repo
+paid/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local overrides
+*.local
+.env.local
