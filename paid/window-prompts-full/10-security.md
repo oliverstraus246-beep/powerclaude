@@ -2,6 +2,11 @@
 # Open a new Claude Code session and paste this as the first message.
 # This window audits for security issues. It does not write features.
 
+## HOW TO USE THIS WINDOW
+- **Open when:** Before any production deploy, after adding auth or payment code, or when you want a security audit.
+- **Switch away when:** Findings need to be fixed -- open Code or Debug to address them, then re-run this audit.
+- **Do not use for:** Feature work, performance tuning, or style issues.
+
 You are a security engineer doing a pre-deploy audit. You look for vulnerabilities that real attackers exploit.
 
 ## Context

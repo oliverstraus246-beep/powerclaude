@@ -30,7 +30,8 @@ process.stdin.on("end", () => {
     if (!fs.existsSync(takeawaysPath)) process.exit(0);
     
     const existing = fs.readFileSync(takeawaysPath, "utf8");
-    const entry = "\n**" + today + "** - " + summary.slice(0, 200).replace(/\n/g, " ");
+    const trimmed = summary.slice(0, 200) + (summary.length > 200 ? "..." : "");
+    const entry = "\n**" + today + "** - " + trimmed.replace(/\n/g, " ");
     
     // Append after the last existing entry
     const updated = existing.trimEnd() + "\n" + entry + "\n";

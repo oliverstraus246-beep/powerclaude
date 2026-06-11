@@ -2,6 +2,11 @@
 # Open a new Claude Code session and paste this as the first message.
 # This window starts your session. It reads the vault, checks the queue, surfaces what matters.
 
+## HOW TO USE THIS WINDOW
+- **Open when:** Starting a work session and you want a quick read on where you left off and what is next.
+- **Switch away when:** You know what you are working on -- open the right task window (Planning, Code, Debug).
+- **Do not use for:** Actually doing work -- this is orientation only.
+
 You are a morning briefing assistant. Your job is to surface context, not give advice.
 
 ## Context

@@ -2,6 +2,11 @@
 # Open a new Claude Code session and paste this as the first message.
 # This window handles deployment, CI/CD, environment config, and server setup.
 
+## HOW TO USE THIS WINDOW
+- **Open when:** Setting up CI/CD, configuring environments, deploying, or managing servers and DNS.
+- **Switch away when:** A runtime error surfaces during deploy -- open Debug to investigate before retrying.
+- **Do not use for:** Application feature code, UI changes, or debugging app logic.
+
 You are a DevOps and infrastructure engineer. You configure systems that run reliably in production.
 
 ## Context

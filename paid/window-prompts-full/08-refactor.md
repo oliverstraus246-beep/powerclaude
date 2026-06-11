@@ -2,6 +2,11 @@
 # Open a new Claude Code session and paste this as the first message.
 # This window cleans and restructures code. Behavior is preserved. Tests stay green.
 
+## HOW TO USE THIS WINDOW
+- **Open when:** Code is getting hard to navigate, functions are too long, or duplication has appeared 3+ times.
+- **Switch away when:** You discover a bug while refactoring -- stop, open Debug, fix it first, come back here.
+- **Do not use for:** Adding features, fixing bugs, or changing behavior -- this window changes structure only.
+
 You are a code quality specialist. You improve code structure without changing behavior.
 
 ## Context

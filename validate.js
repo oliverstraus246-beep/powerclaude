@@ -11,17 +11,17 @@ const { execSync } = require("child_process");
 let passed = 0, failed = 0, warnings = 0;
 
 function ok(label) {
-  console.log("  ✓  " + label);
+  console.log("  [ OK ]  " + label);
   passed++;
 }
 function warn(label, detail) {
-  console.log("  ⚠  " + label);
-  if (detail) console.log("       -> " + detail);
+  console.log("  [WARN]  " + label);
+  if (detail) console.log("           -> " + detail);
   warnings++;
 }
 function fail(label, detail) {
-  console.log("  ✗  " + label);
-  if (detail) console.log("       -> " + detail);
+  console.log("  [FAIL]  " + label);
+  if (detail) console.log("           -> " + detail);
   failed++;
 }
 
@@ -163,11 +163,11 @@ console.log(
 );
 
 if (failed > 0) {
-  console.log("Fix the ✗ items above, then re-run: node validate.js");
+  console.log("Fix the [FAIL] items above, then re-run: node validate.js");
   console.log("See TROUBLESHOOTING.md for help.\n");
   process.exit(1);
 } else if (warnings > 0) {
-  console.log("Setup is functional. Address ⚠ warnings for full capability.\n");
+  console.log("Setup is functional. Address [WARN] warnings for full capability.\n");
 } else {
   console.log("Everything looks good. Open Claude Code and start building.\n");
 }
