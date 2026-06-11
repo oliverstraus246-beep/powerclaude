@@ -94,9 +94,13 @@ That's it. Everything else auto-loads from your vault.
 
 ## Why This Exists
 
-I've been running Claude Code daily for months. The gap between a stock install and a tuned one isn't small -- it's the difference between a capable assistant and a system that knows your codebase, remembers what you decided last Tuesday, routes cheap tasks away from expensive models, and automatically invokes the right behavior for whatever you're doing.
+Claude Code out of the box is a very capable tool that starts from scratch every single session.
 
-That setup took a long time to build. This repo packages it so you don't have to.
+No memory of your stack, your projects, your preferences, or what you worked on yesterday. No automatic behavior — every skill, every model routing decision, every workflow is something you have to ask for explicitly. No specialization — the same Claude handles planning, debugging, code review, and UI work, switching between them mid-session with no focused context.
+
+The gap between that and a tuned setup is not small. It is the difference between a smart assistant you have to constantly manage and a system that works the way you think.
+
+I built this over months of running Claude Code as my primary development environment. Everything in this repo came from fixing something that was actually slowing me down. This is what I use every day.
 
 ---
 
@@ -177,5 +181,6 @@ Issues and PRs welcome. If you've built a hook, skill trigger pattern, or window
 
 *Built on [Claude Code](https://claude.ai/code) by Anthropic.*
 *MIT License -- free tier. Paid tier files are proprietary.*
+
 
 
