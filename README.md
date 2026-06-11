@@ -1,4 +1,4 @@
-# You're running Claude Code at 20% capacity.
+﻿# You're running Claude Code at 20% capacity.
 
 The other 80% is memory, skill routing, multi-window specialization, hook automation, and model cost control. None of it ships by default. This repo wires it all up.
 
@@ -35,9 +35,9 @@ Install the foundation in under 2 minutes.
 
 The free tier is a skeleton. The paid tier is the conversation that builds your actual system.
 
-Most setups fail because they're generic. A CLAUDE.md written for someone else's stack doesn't help you. The paid tier includes a **Personalization Engine** -- a structured prompt you paste into Claude Code. It asks 7 questions about your projects, stack, workflows, and preferences. In return, it outputs a complete, configured environment built around how you actually work.
+Most setups fail because they're generic. A CLAUDE.md written for someone else's stack doesn't help you. The paid tier includes a **Personalization Engine** -- a structured prompt you paste into Claude Code. It asks 13 questions about your projects, stack, workflows, preferences, and working style. In return, it outputs a complete, configured environment built around how you actually work.
 
-- **Personalization Engine** -- answer 7 questions, get a fully generated CLAUDE.md, vault structure, and hook config tuned to your projects
+- **Personalization Engine** -- answer 13 questions, get a fully generated CLAUDE.md, vault structure, and hook config built around how you actually work
 - **Full advanced CLAUDE.md** -- complete proactive behaviors, full model routing logic, the entire skill auto-invoke library (every trigger condition documented)
 - **Complete window prompt library** -- all 11 specialized windows, production-grade: Planning, Debug, Code Review, UI/Design, Infrastructure, Research, Prompt Engineering, Refactor, Briefing, Security, Handoff
 - **Full hook library** -- pre/post hooks for TypeScript, Python, React, Node; vault-logging hooks that capture decisions and patterns automatically
@@ -102,9 +102,13 @@ That setup took a long time to build. This repo packages it so you don't have to
 
 ## Get the Full Setup
 
-**[Buy the Personalization Engine -- $25](https://gumroad.com/l/powerclaude)**
+**$25 one-time. Lifetime updates.**
 
-One-time. Lifetime updates. If it doesn't save you more than 2 hours in your first week, you don't need it.
+Text or CashApp to get access:
+- CashApp: **$oliverstraus**
+- Text: **303-946-4224**
+
+Send $25 and your GitHub username. You'll get added as a collaborator on the private repo within a few hours.
 
 ---
 
@@ -119,8 +123,8 @@ Yes. The install script, vault system, and all hook patterns are tested on Windo
 **What if I already have a CLAUDE.md?**
 The installer backs it up to `CLAUDE.md.backup` before installing the template. Nothing gets overwritten without a safety copy.
 
-**Is the paid tier a one-time purchase?**
-Yes. No subscription. Updates ship to the same Gumroad product.
+**How does the paid tier work?**
+Yes. No subscription. You have the private repo -- pull anytime to get updates.
 
 **What's the difference between the free template and the paid advanced CLAUDE.md?**
 The free template has every section with instructions and examples -- a solid starting point you fill in yourself. The paid version is the full, production-grade file: every auto-invoke rule, every skill trigger, the complete model routing matrix, and vault conventions. The exact architecture running daily in a production setup.
@@ -171,3 +175,4 @@ Issues and PRs welcome. If you've built a hook, skill trigger pattern, or window
 
 *Built on [Claude Code](https://claude.ai/code) by Anthropic.*
 *MIT License -- free tier. Paid tier files are proprietary.*
+
