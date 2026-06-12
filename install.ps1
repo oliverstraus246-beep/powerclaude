@@ -209,6 +209,4 @@ Write-Host ""
 Write-Host "Verify setup: node $claudeDir\validate.js" -ForegroundColor Gray
 Write-Host "Troubleshooting: TROUBLESHOOTING.md in the repo" -ForegroundColor Gray
 Write-Host ""
-Write-Host "Want it all pre-configured in 7 questions?" -ForegroundColor Cyan
-Write-Host "  https://gumroad.com/l/powerclaude - paid tier" -ForegroundColor White
-Write-Host ""
+Write-Host "Want the full setup? Text 303-946-4224 or CashApp: oliverstraus -- $25, lifetime access." -ForegroundColor Cyan
